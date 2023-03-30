@@ -22,24 +22,24 @@ class Api {
   };
 
   /** Метод редактирование профиля */
-  async changeUserInfo(name, info) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({
-        name: name,
-        about: info,
-      }),
-    }).then(this._checkResponse);
-  };
+  async changeUserInfo(items) {
+		return fetch(`${this._baseUrl}/users/me`, {
+			method: "PATCH",
+			headers: this._headers,
+			body: JSON.stringify({
+				name: items.name,
+				about: items.about,
+			}),
+		}).then(this._checkResponse);
+	};
 
-  async changeUserAvatar(body) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({ avatar: body, }),
-    }).then(this._checkResponse);
-  };
+	async changeUserAvatar(items) {
+		return fetch(`${this._baseUrl}/users/me/avatar`, {
+			method: "PATCH",
+			headers: this._headers,
+			body: JSON.stringify({ avatar: items.avatar, }),
+		}).then(this._checkResponse);
+	};
 
   /** Метод загрузки карточек с сервера */
   async getInitialCards() {
@@ -49,16 +49,16 @@ class Api {
   };
 
   /** Метод добавления новой карточки */
-  async addCard(name, link) {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: "POST",
-      headers: this._headers,
-      body: JSON.stringify({
-        name: name,
-        link: link,
-      }),
-    }).then(this._checkResponse);
-  };
+  async addCard(items) {
+		return fetch(`${this._baseUrl}/cards`, {
+			method: "POST",
+			headers: this._headers,
+			body: JSON.stringify({
+				name: items.name,
+				link: items.link,
+			}),
+		}).then(this._checkResponse);
+	};
 
   /** Метод удаления карточки */
   async deleteCard(id) {
