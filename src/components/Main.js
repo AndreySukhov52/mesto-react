@@ -9,7 +9,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 function Main({ onEditProfile,
   onEditAvatar,
   onAddPlace,
-  onCardClick, 
+  onCardClick,
   cards,
   onCardLike,
   onConfirmCardDelete
@@ -55,9 +55,9 @@ function Main({ onEditProfile,
             onCardClick={onCardClick}
             onCardLike={onCardLike}
             onConfirmCardDelete={onConfirmCardDelete}
-        />);
-    })
-};
+          />);
+        })
+      };
       </section>
     </main>
   );
