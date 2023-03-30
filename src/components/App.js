@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../index.css';
 import Header from './Header.js';
 import Main from './Main.js';
 import Footer from './Footer.js';
-import PopupWithForm from './PopupWithForm.js';
+import  api  from '../utils/api.js';
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
+import EditProfilePopup from './EditProfilePopup.js';
+import EditAvatarPopup from './EditAvatarPopup.js';
+import AddPlacePopup from './AddPlacePopup.js';
 import ImagePopup from './ImagePopup.js';
+import ConfirmationPopup from './ConfirmationPopup.js ';
+
 
 function App() {
 
@@ -12,6 +18,21 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [cards, setCards] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
+  const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = useState(null)
+
+
+  useEffect(() => {
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([data, items]) => {
+            setCurrentUser(data);
+            setCards(items);
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}, []);
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
