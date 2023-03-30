@@ -47,7 +47,6 @@ function EditProfilePopup(props) {
                 id="inputName"
                 type="text"
                 placeholder="Имя"
-                name="inputName"
                 value={name || ''} onChange={handleUpdateName}
             />
             <span className="inputName-error popup__input-error" id="inputName-error"></span>
@@ -56,7 +55,6 @@ function EditProfilePopup(props) {
                 id="inputAbout"
                 type="text"
                 placeholder="О себе"
-                name="inputAbout"
                 value={description} onChange={handleUpdateDescription}
             />
             <span className="inputAbout-error popup__input-error" id="inputAbout-error"></span>

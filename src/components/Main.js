@@ -3,7 +3,7 @@ import pen from '../images/pen.svg';
 import buttonImage from '../images/Vector.svg';
 import React, { useContext } from 'react';
 import Card from './Card.js';
-import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 
 function Main({ onEditProfile,
@@ -55,9 +55,9 @@ function Main({ onEditProfile,
             onCardClick={onCardClick}
             onCardLike={onCardLike}
             onConfirmCardDelete={onConfirmCardDelete}
-          />);
+          />)
         })
-      };
+      }
       </section>
     </main>
   );
