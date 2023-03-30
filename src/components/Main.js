@@ -1,30 +1,21 @@
 
 import pen from '../images/pen.svg';
 import buttonImage from '../images/Vector.svg';
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Card from './Card.js';
-import api from '../utils/api.js';
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 
 function Main({ onEditProfile,
   onEditAvatar,
   onAddPlace,
-  onCardClick
+  onCardClick, 
+  cards,
+  onCardLike,
+  onConfirmCardDelete
 }) {
 
-  const [currentUser, setCurrentUser] = useState({});
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([data, items]) => {
-        setCurrentUser(data);
-        setCards(items);
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <main className="content">
@@ -62,12 +53,14 @@ function Main({ onEditProfile,
             link={card.link}
             likes={card.likes}
             onCardClick={onCardClick}
-          />)
-        })
-      }
+            onCardLike={onCardLike}
+            onConfirmCardDelete={onConfirmCardDelete}
+        />);
+    })
+};
       </section>
     </main>
   );
-}
+};
 
 export default Main;
