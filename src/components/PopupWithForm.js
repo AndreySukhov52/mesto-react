@@ -1,4 +1,4 @@
-import React, {useEffect}  from 'react';
+import React, { useEffect } from 'react';
 
 function PopupWithForm(props) {
 	/** Закрываем попапы по кнопке Escape */
@@ -31,9 +31,9 @@ function PopupWithForm(props) {
 
 	return (
 		<div
-		className={`popup popup_${props.name} ${props.isOpen ? 'popup_opened' : ''
-	}`}
->
+			className={`popup popup_${props.name} ${props.isOpen ? 'popup_opened' : ''
+				}`}
+		>
 			<div className="popup__container">
 				<button
 					className="popup__close"
