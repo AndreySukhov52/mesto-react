@@ -7,25 +7,25 @@ function AddPlacePopup(props) {
 
     useEffect(() => {
         setName('');
-        setLink('');
+        setLink(``);
     }, [props.isOpen]);
 
-    function handleUpdateName(evt) {
-        setName(evt.target.value);
-    };
+    function handleUpdateName(e) {
+        setName(e.target.value);
+    }
 
-    function handleUpdateLink(evt) {
-        setLink(evt.target.value);
-    };
+    function handleUpdateLink(e) {
+        setLink(e.target.value);
+    }
 
-    function handleSubmit(evt) {
-        evt.preventDefault();
+    function handleSubmit(e) {
+        e.preventDefault();
 
         props.onAddPlace({
             name,
             link,
         });
-    };
+    }
 
     return (
         <PopupWithForm
